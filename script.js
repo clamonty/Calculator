@@ -25,7 +25,7 @@ const percent = function(x,y) {
 }
 // Clear calculator display
 const clear = function(display) {
-  display.value = "";
+  display.value = "0";
 }
 // Perform an operation on two numbers
 function operate(operator, x, y) {
@@ -36,7 +36,6 @@ function operate(operator, x, y) {
 // Convert display value to float, clear the display, and return the result
 function getDisplay(display) {
   let result = parseFloat(display.value);
-  clear(display);
   return result;
 }
 
@@ -71,15 +70,14 @@ function getOperation(str) {
   }
 }
 
-
-
-
 ////////// DOM INTERACTION //////////
 
 
 const display = document.querySelector('input');
 // Array to store entered numbers and operations
 const result = [];
+// Boolean to track whether a new number has been entered
+let newNum = false;
 
 // Clear the current display
 document.querySelector('.clear').addEventListener('click', () => {
@@ -90,7 +88,15 @@ document.querySelector('.clear').addEventListener('click', () => {
 // Update the display value when number keys are clicked
 document.querySelectorAll('.numKey').forEach(numKey => {
   numKey.addEventListener('click', (e) => {
-    display.value += e.target.textContent;
+    if (display.value == "0") {
+      display.value = e.target.textContent;
+    }
+    else if (newNum) {
+      display.value = e.target.textContent;
+      newNum = false;
+    } else {
+      display.value += e.target.textContent;
+    }
   });
 });
 
@@ -100,7 +106,6 @@ document.querySelectorAll('.opKey').forEach(opKey => {
     // If negate or delete key, update display value
     if (e.target.classList.contains('negate')) {
       display.value = negate(display.value);
-      console.log(result);
     }
     else if (e.target.classList.contains('delete')) {
       display.value = display.value.substr(0, display.value.length - 1);
@@ -108,13 +113,12 @@ document.querySelectorAll('.opKey').forEach(opKey => {
     // If clear key, empty display value and result array
     else if (e.target.classList.contains('clear')) {
       clear(display);
-      console.log(result);
     }
     // Otherwise store current display value and operation in result array, and clear display value
     else {
       result.push(getDisplay(display));
       result.push(e.target.classList[1]);
-      console.log(result);
+      newNum = true;
     }
   });
 });
@@ -136,6 +140,7 @@ document.querySelector('.eqKey').addEventListener('click', () => {
     let answer = calculate(result);
     display.value = answer;
     result.length = 0;
+    newNum = true;
   }
 });
 
