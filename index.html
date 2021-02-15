@@ -8,28 +8,32 @@
 </head>
 <body>
   <main>
-    <input type="number" value=0>
+    <input type="text" value="">
     <div class="keys">
-      <button class="opKey clear" op="clear">C</button>
-      <button class="opKey negate" op="negate">+/-</button>
-      <button class="opKey percent" op="percent">%</button>
-      <button class="opKey divide" op="divide">/</button>
-      <button class="numKey">7</button>
-      <button class="numKey">8</button>
-      <button class="numKey">9</button>
-      <button class="opKey multiply" op="multiply">x</button>
-      <button class="numKey">4</button>
-      <button class="numKey">5</button>
-      <button class="numKey">6</button>
-      <button class="opKey subtract" op="subtract">-</button>
-      <button class="numKey">1</button>
-      <button class="numKey">2</button>
-      <button class="numKey">3</button>
-      <button class="opKey add" op="add">+</button>
-      <span></span>
-      <button class="numKey">0</button>
-      <button class="decKey">.</button>
-      <button class="eqKey">=</button>
+      <button class="opKey clear">C</button>
+      <button class="opKey delete" data-key="8">&lt;&lt;</button>
+      <button class="opKey negate">+/-</button>
+      <button class="opKey percent">%</button>
+      <button class="numKey" data-key="103">7</button>
+      <button class="numKey" data-key="104">8</button>
+      <button class="numKey" data-key="105">9</button>
+      <button class="opKey divide" data-key="111">/</button>
+      <button class="numKey" data-key="100">4</button>
+      <button class="numKey" data-key="101">5</button>
+      <button class="numKey" data-key="102">6</button>
+      <button class="opKey multiply" data-key="106">x</button>
+      <button class="numKey" data-key="97">1</button>
+      <button class="numKey" data-key="98">2</button>
+      <button class="numKey" data-key="99">3</button>
+      <button class="opKey subtract" data-key="109">-</button>
+      <button class="numKey" data-key="96">0</button>
+      <button class="decKey" data-key="110">.</button>
+      <button class="eqKey" data-key="13">=</button>
+      <button class="opKey add" data-key="107">+</button>
+
+
+
+
     </div>
   </main>
   <script src="/functions.js"></script>
